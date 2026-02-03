@@ -41,6 +41,10 @@ let jobs = [
 
 let nextJobId = 3;
 
+app.get('/api/users', (req, res) => {
+    res.json(users);
+});
+
 app.listen(PORT, () => {
     console.log(`\n Freelance Marketplace running at http://localhost:${PORT}`);
 });
