@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">💼</span>
+                <h1>FreelanceHub</h1>
+            </div>
+            <div class="user-info" id="userInfo">
+                <span id="userBalance"></span>
+                <span id="userName"></span>
+            </div>
+        </header>
+
+        <section id="loginSection" class="section login-section">
+            <div class="login-card">
+                <h2>Welcome to FreelanceHub</h2>
+                <p>Select a user to simulate login:</p>
+                <select id="userSelect" class="user-select">
+                    <option value="">-- Choose User --</option>
+                </select>
+                <button id="loginBtn" class="btn btn-primary" disabled>Login</button>
+            </div>
+        </section>
+
+        <main id="mainApp" class="main-app hidden">
+            <!-- Navigation Tabs -->
+            <nav class="tabs">
+                <button class="tab-btn active" data-tab="jobFeed">Job Feed</button>
+                <button class="tab-btn" data-tab="myDashboard">My Dashboard</button>
+                <button class="tab-btn" data-tab="postJob" id="postJobTab">Post a Job</button>
+            </nav>
+
+            <section id="jobFeed" class="tab-content active">
+                <h2>Available Jobs</h2>
+                <div id="jobsList" class="jobs-list">
+                    <!-- Jobs will be loaded here -->
+                </div>
+            </section>
+
+            <section id="myDashboard" class="tab-content">
+                <h2>My Dashboard</h2>
+                
+                <div id="clientDashboard" class="dashboard-section hidden">
+                    <h3>📋 My Posted Jobs</h3>
+                    <div id="myPostedJobs" class="jobs-list">
+                        <!-- Client's jobs -->
+                    </div>
+                </div>
+
+                <div id="freelancerDashboard" class="dashboard-section hidden">
+                    <h3>📝 My Bids</h3>
+                    <div id="myBids" class="jobs-list">
+                    </div>
+                    <h3>🔨 Active Work</h3>
+                    <div id="myActiveWork" class="jobs-list">
+                    </div>
+                </div>
+            </section>
+
+            <section id="postJob" class="tab-content">
+                <h2>Post a New Job</h2>
+                <form id="postJobForm" class="form">
+                    <div class="form-group">
+                        <label for="jobTitle">Job Title</label>
+                        <input type="text" id="jobTitle" required placeholder="e.g., Build a website">
+                    </div>
+                    <div class="form-group">
+                        <label for="jobDescription">Description</label>
+                        <textarea id="jobDescription" rows="4" placeholder="Describe the job requirements..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="jobBudget">Budget ($)</label>
+                        <input type="number" id="jobBudget" required min="1" placeholder="100">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Post Job</button>
+                </form>
+            </section>
+        </main>
+
+        <div id="bidModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn" id="closeBidModal">&times;</span>
+                <h2>Place Your Bid</h2>
+                <p id="bidJobTitle"></p>
+                <form id="bidForm" class="form">
+                    <input type="hidden" id="bidJobId">
+                    <div class="form-group">
+                        <label for="bidAmount">Your Bid Amount ($)</label>
+                        <input type="number" id="bidAmount" required min="1" placeholder="150">
+                    </div>
+                    <div class="form-group">
+                        <label for="bidMessage">Message to Client</label>
+                        <textarea id="bidMessage" rows="3" placeholder="Why should they hire you?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Bid</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="toast" class="toast hidden"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
