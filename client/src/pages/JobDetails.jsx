@@ -100,7 +100,7 @@ const JobDetails = () => {
 
                 <div className="flex items-center space-x-2 text-lg font-semibold">
                     <span>Budget:</span>
-                    <span className="text-green-600">${job.budget}</span>
+                    <span className="text-green-600">Rs {job.budget.toLocaleString('en-IN')}</span>
                 </div>
             </div>
 
@@ -111,7 +111,7 @@ const JobDetails = () => {
                     <form onSubmit={onBidSubmit}>
                         <div className="grid md:grid-cols-2 gap-4 mb-4">
                             <div>
-                                <label className="block text-gray-700 font-bold mb-2">Bid Amount ($)</label>
+                                <label className="block text-gray-700 font-bold mb-2">Bid Amount (Rs)</label>
                                 <input type="number" value={bidAmount} onChange={e => setBidAmount(e.target.value)} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" required />
                             </div>
                         </div>
@@ -141,7 +141,7 @@ const JobDetails = () => {
                                         <p className="text-sm text-gray-500">{new Date(bid.createdAt).toLocaleDateString()}</p>
                                     </div>
                                     <div className="text-right">
-                                        <span className="block text-2xl font-bold text-green-600">${bid.amount}</span>
+                                        <span className="block text-2xl font-bold text-green-600">Rs {bid.amount.toLocaleString('en-IN')}</span>
                                         <span className={`text-xs font-bold uppercase ${bid.status === 'accepted' ? 'text-green-600' : bid.status === 'rejected' ? 'text-red-500' : 'text-gray-500'}`}>
                                             {bid.status}
                                         </span>

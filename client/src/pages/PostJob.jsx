@@ -31,8 +31,8 @@ const PostJob = () => {
             });
             navigate('/jobs');
         } catch (err) {
-            console.error(err.response.data);
-            alert(err.response.data.msg || 'Error posting job');
+            console.error(err?.response?.data || err.message);
+            alert(err?.response?.data?.msg || 'Error posting job');
         }
     };
 
@@ -63,7 +63,7 @@ const PostJob = () => {
                         ></textarea>
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Budget ($)</label>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Budget (Rs)</label>
                         <input
                             type="number"
                             name="budget"

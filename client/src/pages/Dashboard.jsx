@@ -12,7 +12,10 @@ const Dashboard = () => {
         const fetchData = async () => {
             try {
                 const token = localStorage.getItem('token');
-                if (!token) return;
+                if (!token) {
+                    setLoading(false);
+                    return;
+                }
 
                 const profileRes = await api.get('/profile/me', { headers: { 'x-auth-token': token } });
                 setUser(profileRes.data);
@@ -99,7 +102,7 @@ const Dashboard = () => {
                                 <div key={bid._id} className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                                     <div className="flex justify-between items-start mb-2">
                                         <h4 className="text-lg font-bold text-gray-800">{bid.job.title}</h4>
-                                        <span className="font-bold text-green-600 text-lg">${bid.amount}</span>
+                                        <span className="font-bold text-green-600 text-lg">Rs {bid.amount.toLocaleString('en-IN')}</span>
                                     </div>
                                     <div className="flex justify-between items-center mt-4">
                                         <div>

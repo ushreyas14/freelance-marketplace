@@ -51,7 +51,7 @@ const JobBoard = () => {
                                 <div className="flex justify-between items-start mb-4">
                                     <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition line-clamp-1">{job.title}</h3>
                                     <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full font-bold uppercase tracking-wide">
-                                        ${job.budget}
+                                        Rs {job.budget.toLocaleString('en-IN')}
                                     </span>
                                 </div>
                                 <p className="text-gray-600 mb-6 flex-grow line-clamp-3">{job.description}</p>

@@ -7,6 +7,12 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/freelance_marketplace';
+
+if (!process.env.JWT_SECRET) {
+    process.env.JWT_SECRET = 'dev_jwt_secret_change_me';
+    console.warn('JWT_SECRET not set; using development fallback secret.');
+}
 
 // Middleware
 app.use(cors());
@@ -23,7 +29,7 @@ console.log('Mounting Profile Routes...');
 app.use('/api/profile', require('./routes/profile'));
 
 // Database Connection
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(MONGODB_URI, { serverSelectionTimeoutMS: 5000 })
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
