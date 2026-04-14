@@ -16,6 +16,7 @@ const JobBoard = () => {
                 setLoading(false);
             } catch (err) {
                 console.error(err);
+                alert("Failed to load jobs. Please try again.");
                 setLoading(false);
             }
         };
