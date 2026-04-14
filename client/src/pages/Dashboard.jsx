@@ -12,13 +12,13 @@ const Dashboard = () => {
         const fetchData = async () => {
             try {
                 const token = localStorage.getItem('token');
-                if (!token) {
+                if (!token ) {
                     setLoading(false);
                     return;
                 }
 
                 const profileRes = await api.get('/profile/me', { headers: { 'x-auth-token': token } });
-                setUser(profileRes.data);
+                setUser(profileRes.data );
 
                 if (profileRes.data.role === 'client') {
                     const jobsRes = await api.get('/jobs/my-jobs', { headers: { 'x-auth-token': token } });
