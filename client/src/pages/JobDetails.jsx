@@ -31,6 +31,7 @@ const JobDetails = () => {
                 }
             } catch (err) {
                 console.error(err);
+                alert("Error fetching job details");
             }
         };
         fetchJobAndBids();
@@ -47,7 +48,7 @@ const JobDetails = () => {
             setProposal('');
             alert('Bid placed successfully!');
         } catch (err) {
-            alert(err.response?.data?.msg || 'Error placing bid');
+            alert('Error placing bid');
         }
     };
 
@@ -73,10 +74,10 @@ const JobDetails = () => {
             setFeedback('');
             alert(`Bid ${actionType}ed successfully!`);
         } catch (err) {
-            alert(err.response?.data?.msg || 'Error processing request');
+            alert('Error processing request');
         }
     };
-
+    //loading
     if (!job) return <div className="flex justify-center items-center h-screen"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div></div>;
 
     const isClientOwner = user && user._id === job.postedBy._id;
